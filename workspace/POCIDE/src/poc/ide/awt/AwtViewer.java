@@ -1,5 +1,7 @@
 package poc.ide.awt;
 
+import java.awt.Color;
+
 import javax.swing.JTextArea;
 
 import poc.ide.code.CodeTree;
@@ -11,10 +13,13 @@ class AwtViewer extends Viewer
 	
 	AwtViewer()
 	{
-		textArea = new JTextArea();
+		textArea = new JTextArea("");
 		textArea.setEditable(false);
-		textArea.setBounds(0,0,500,500);
+//		textArea.setBounds(0, 0, 500, 500);
 		textArea.setVisible(true);
+		
+		textArea.setBackground(Color.black);
+		textArea.setForeground(Color.white);
 	}
 
 	@Override

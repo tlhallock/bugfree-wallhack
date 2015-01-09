@@ -21,7 +21,7 @@ class AwtUtil
 	{
 		JFrame frame = createWindow(name);
 		frame.getRootPane().setLayout(new BorderLayout());
-		frame.getRootPane().add(root, BorderLayout.CENTER);
+		frame.add(root, BorderLayout.CENTER);
 		return frame;
 	}
 }

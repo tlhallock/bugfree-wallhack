@@ -27,6 +27,7 @@ public abstract class Viewer implements Observer
 		}
 		
 		code = newCode;
+		display(code);
 
 		if (code != null)
 		{

@@ -19,9 +19,9 @@ public class AwtGuiFactory extends GuiFactory
 	@Override
 	public Viewer createViewer()
 	{
-		AwtViewer viewer = new AwtViewer();
-		AwtUtil.createWindow("Viewer", viewer.getTextArea());
-		return viewer;
+		AwtViewer awtViewer = new AwtViewer();
+		AwtUtil.createWindow("Viewer", awtViewer.getTextArea());
+		return awtViewer;
 	}
 
 	@Override
