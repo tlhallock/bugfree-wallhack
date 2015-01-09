@@ -14,7 +14,6 @@ public class Assignment<T extends Type> extends Expression<T>
 	public Assignment()
 	{
 		variable = new Name();
-		
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package poc.ide.code;
 import java.util.Collections;
 import java.util.List;
 
+import poc.ide.code.Type.Clazz;
 import poc.ide.code.Type.Primitive.BooleanType;
 import poc.ide.gui.InputMethod;
 
@@ -43,5 +44,25 @@ public abstract class Expression<T extends Type> extends CodeTree
 		{
 			return Collections.emptyList();
 		}
+	}
+	
+	public static class Null<T extends Clazz> extends Expression<T>
+	{
+		@Override
+		public StringBuilder appendText(StringBuilder builder, int depth)
+		{
+			return builder.append("null");
+		}
+
+		@Override
+		public List<InputMethod<? extends CodeTree>> getInputs()
+		{
+			return Collections.emptyList();
+		}
+	}
+	
+	public static <T extends Type> Expression<T> getDefaultExpression(T t)
+	{
+		return null;
 	}
 }
