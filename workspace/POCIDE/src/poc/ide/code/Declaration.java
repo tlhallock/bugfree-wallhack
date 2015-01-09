@@ -28,9 +28,6 @@ public class Declaration<T extends Type> extends CodeTree
 	}
 
 	@Override
-	protected void setParameter(String label, Object value) {}
-
-	@Override
 	public List<InputMethod<? extends CodeTree>> getInputs()
 	{
 		List<InputMethod<? extends CodeTree>> returnValue = new LinkedList<>();

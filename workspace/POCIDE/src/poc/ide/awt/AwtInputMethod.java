@@ -5,7 +5,7 @@ import java.awt.Component;
 import poc.ide.code.CodeTree;
 import poc.ide.gui.InputMethod;
 
-public abstract class AwtInputMethod<T extends CodeTree> extends InputMethod<T>
+abstract class AwtInputMethod<T extends CodeTree> extends InputMethod<T>
 {
 	AwtInputMethod(String label, T code)
 	{

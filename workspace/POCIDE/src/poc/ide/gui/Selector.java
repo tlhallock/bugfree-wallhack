@@ -8,38 +8,29 @@ import poc.ide.code.NotCode;
 
 public abstract class Selector
 {
-	private Viewer viewer;
 	private LinkedList<CodeTree> stack;
+	private Viewer viewer;
 	
-	public Selector()
+	public Selector(Viewer viewer)
 	{
-		viewer = Window.guiFactory.createViewer();
+		this.viewer = viewer;
 		stack = new LinkedList<>();
 	}
 	
 	public void push(CodeTree c)
 	{
-		getCurrent().removeViewer(viewer);
-		
 		stack.push(c);
 		edit(getCurrent());
-		
-		viewer.show(c);
-		c.addViewer(viewer);
 	}
 	
 	public void pop()
 	{
-		getCurrent().removeViewer(viewer);
-		
 		if (!stack.isEmpty())
 		{
 			stack.pop();
 		}
 		
 		edit(getCurrent());
-		viewer.show(getCurrent());
-		getCurrent().addViewer(viewer);
 	}
 	
 	public CodeTree getCurrent()
@@ -55,6 +46,7 @@ public abstract class Selector
 	private void edit(CodeTree c)
 	{
 		edit(c.getInputs());
+		viewer.setCode(c);
 	}
 	
 	protected abstract void edit(List<InputMethod<? extends CodeTree>> inputs);

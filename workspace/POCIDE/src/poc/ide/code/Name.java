@@ -27,12 +27,6 @@ public class Name extends CodeTree
 		return builder.append(name);
 	}
 
-	@Override
-	protected void setParameter(String label, Object value)
-	{
-		name = ((Name) value).getName();
-	}
-
 	public String getName()
 	{
 		return name;
@@ -42,7 +36,7 @@ public class Name extends CodeTree
 	public List<InputMethod<? extends CodeTree>> getInputs()
 	{
 		List<InputMethod<? extends CodeTree>> returnValue = new LinkedList<>();
-		returnValue.add(Window.guiFactory.createNameInputMethod("Name:", this));
+		returnValue.add(Window.getWindow().getGuiFactor().createNameInputMethod("Name:", this));
 		return returnValue;
 	}
 
@@ -55,5 +49,6 @@ public class Name extends CodeTree
 	public void setName(String text)
 	{
 		name = text;
+		notifyObservers();
 	}
 }

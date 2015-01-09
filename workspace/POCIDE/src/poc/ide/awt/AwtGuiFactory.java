@@ -25,11 +25,11 @@ public class AwtGuiFactory extends GuiFactory
 	}
 
 	@Override
-	public Selector createSelector()
+	public Selector createSelector(Viewer v)
 	{
 		JFrame createWindow = AwtUtil.createWindow("Selector");
 		JRootPane rootPane = createWindow.getRootPane();
-		AwtSelector selector = new AwtSelector(rootPane);
+		AwtSelector selector = new AwtSelector(v, rootPane);
 		return selector;
 	}
 

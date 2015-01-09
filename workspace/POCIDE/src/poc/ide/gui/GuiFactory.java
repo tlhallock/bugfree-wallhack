@@ -9,7 +9,7 @@ import poc.ide.proj.Project;
 public abstract class GuiFactory
 {
 	public abstract                  Viewer       createViewer();
-	public abstract                  Selector     createSelector();
+	public abstract                  Selector     createSelector(Viewer v);
 	public abstract                  ClassViewer  createClassViewer(Project project);
 	
 	public abstract                  InputMethod<Name>  createNameInputMethod (String label, Name callback);

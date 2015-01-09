@@ -27,17 +27,17 @@ public class Package extends CodeTree
 		return builder.append(name);
 	}
 
-	@Override
-	protected void setParameter(String label, Object value)
-	{
-		String[] split = ((String) value).split(".");
-		
-		name = new Name[split.length];
-		for (int i = 0; i < split.length; i++)
-		{
-			name[i] = new Name(this, split[i]);
-		}
-	}
+//	@Override
+//	protected void setParameter(String label, Object value)
+//	{
+//		String[] split = ((String) value).split(".");
+//		
+//		name = new Name[split.length];
+//		for (int i = 0; i < split.length; i++)
+//		{
+//			name[i] = new Name(this, split[i]);
+//		}
+//	}
 
 	@Override
 	public List<InputMethod<? extends CodeTree>> getInputs()

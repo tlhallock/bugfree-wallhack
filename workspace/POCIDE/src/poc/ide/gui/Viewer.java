@@ -1,8 +1,47 @@
 package poc.ide.gui;
 
-import poc.ide.code.CodeTree;
+import java.util.Observable;
+import java.util.Observer;
 
-public abstract class Viewer
+import poc.ide.code.CodeTree;
+import poc.ide.main.RecursiveObserver;
+
+public abstract class Viewer implements Observer
 {
-	public abstract void show(CodeTree code);
+	private RecursiveObserver<CodeTree> observer;
+	private CodeTree code;
+	
+	public Viewer()
+	{
+		observer = new RecursiveObserver<CodeTree>();
+		observer.addObserver(this);
+		
+		code = null;
+	}
+
+	public void setCode(CodeTree newCode)
+	{
+		if (code != null)
+		{
+			observer.remove(code);
+		}
+		
+		code = newCode;
+
+		if (code != null)
+		{
+			observer.add(code);
+		}
+	}
+	
+	@Override
+	public void update(Observable o, Object arg)
+	{
+		if (code != null)
+		{
+			display(code);
+		}
+	}
+
+	public abstract void display(CodeTree code);
 }

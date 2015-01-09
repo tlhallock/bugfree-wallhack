@@ -29,16 +29,10 @@ public class Label extends CodeTree
 	}
 
 	@Override
-	protected void setParameter(String label, Object value)
-	{
-		this.name = (Name) value;
-	}
-
-	@Override
 	public List<InputMethod<? extends CodeTree>> getInputs()
 	{
 		List<InputMethod<? extends CodeTree>> list = new LinkedList<>();
-		list.add(Window.guiFactory.createNameInputMethod("Label Name: ", name));
+		list.add(Window.getWindow().getGuiFactor().createNameInputMethod("Label Name: ", name));
 		return list;
 	}
 

@@ -1,7 +1,6 @@
 package poc.ide.awt;
 
 import java.awt.Component;
-import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,8 +12,9 @@ import javax.swing.JRootPane;
 import poc.ide.code.CodeTree;
 import poc.ide.gui.InputMethod;
 import poc.ide.gui.Selector;
+import poc.ide.gui.Viewer;
 
-public class AwtSelector extends Selector implements ActionListener
+class AwtSelector extends Selector implements ActionListener
 {
 	private GridLayout layout = new GridLayout(0,1);
 	private JRootPane root;
@@ -22,8 +22,9 @@ public class AwtSelector extends Selector implements ActionListener
 	
 	private List<InputMethod<? extends CodeTree>> inputs;
 	
-	AwtSelector(JRootPane root)
+	AwtSelector(Viewer v, JRootPane root)
 	{
+		super(v);
 		this.root = root;
 		root.setLayout(layout);
 		

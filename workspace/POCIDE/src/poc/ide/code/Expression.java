@@ -3,7 +3,6 @@ package poc.ide.code;
 import java.util.Collections;
 import java.util.List;
 
-import poc.ide.code.Type.Clazz;
 import poc.ide.code.Type.Primitive.BooleanType;
 import poc.ide.gui.InputMethod;
 

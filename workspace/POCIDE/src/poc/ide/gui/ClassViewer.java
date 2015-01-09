@@ -2,8 +2,8 @@ package poc.ide.gui;
 
 import java.util.TreeSet;
 
+import poc.ide.code.Clazz;
 import poc.ide.code.CodeTree;
-import poc.ide.code.Type.Clazz;
 import poc.ide.proj.CodeSet.CodeFilter;
 import poc.ide.proj.Project;
 

@@ -5,9 +5,9 @@ import java.awt.Component;
 
 import javax.swing.JFrame;
 
-public class AwtUtil
+class AwtUtil
 {
-	public static JFrame createWindow(String name)
+	static JFrame createWindow(String name)
 	{
 		JFrame frame = new JFrame(name);
 		frame.setBounds(50,50,500,500);
@@ -17,7 +17,7 @@ public class AwtUtil
 		return frame;
 	}
 	
-	public static JFrame createWindow(String name, Component root)
+	static JFrame createWindow(String name, Component root)
 	{
 		JFrame frame = createWindow(name);
 		frame.getRootPane().setLayout(new BorderLayout());

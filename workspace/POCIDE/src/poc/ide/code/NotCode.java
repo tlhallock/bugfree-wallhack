@@ -22,12 +22,6 @@ public class NotCode extends CodeTree
 	@Override
 	public List<InputMethod<? extends CodeTree>> getInputs() { return Collections.emptyList(); }
 	
-	/**
-	 * Do not have any viewers...
-	 */
-	@Override
-	public void addViewer(Viewer v) {}
-
 	@Override
 	public String getUniqueNamespaceToken()
 	{

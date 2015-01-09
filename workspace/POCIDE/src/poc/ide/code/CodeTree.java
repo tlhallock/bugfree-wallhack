@@ -1,15 +1,18 @@
 package poc.ide.code;
 
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Observable;
 
 import poc.ide.gui.InputMethod;
-import poc.ide.gui.Viewer;
+import poc.ide.main.TreeStructure;
 
-public abstract class CodeTree implements Comparable<CodeTree>
+public abstract class CodeTree extends Observable implements Comparable<CodeTree>, TreeStructure<CodeTree> 
 {
-	private List<Viewer> viewers;
 	private CodeTree parent;
+	
+	private List<CodeTree> children = new LinkedList<>();
 	
 	private Comment comment;
 	
@@ -17,18 +20,32 @@ public abstract class CodeTree implements Comparable<CodeTree>
 
 	public CodeTree(CodeTree parent)
 	{
-		this.viewers = new LinkedList<Viewer>();
-		this.parent = parent;
+		setParent(parent);
 	}
 	
 	void setParent(CodeTree parent)
 	{
+		if (this.parent != null)
+		{
+			this.parent.getChildren().remove(this);
+		}
+		
 		this.parent = parent;
+
+		if (this.parent != null)
+		{
+			this.parent.getChildren().add(this);
+		}
 	}
 	
 	public CodeTree getParent()
 	{
 		return parent;
+	}
+	
+	public Collection<CodeTree> getChildren()
+	{
+		return children;
 	}
 	
 	
@@ -56,16 +73,6 @@ public abstract class CodeTree implements Comparable<CodeTree>
 	
 	
 	
-
-	public void addViewer(Viewer viewer)
-	{
-		viewers.add(viewer);
-	}
-
-	public void removeViewer(Viewer viewer)
-	{
-		viewers.remove(viewer);
-	}
 	
 	public String toString()
 	{
@@ -75,29 +82,6 @@ public abstract class CodeTree implements Comparable<CodeTree>
 		
 		return builder.toString();
 	}
-	
-	
-	public void changed()
-	{
-		if (parent != null)
-		{
-			parent.changed();
-		}
-		for (Viewer viewer : viewers)
-		{
-			viewer.show(this);
-		}
-	}
-	
-	
-	
-
-	public void updateParameter(String label, Object value)
-	{
-		setParameter(label, value);
-		changed();
-	}
-	protected void setParameter(String label, Object value) {};
 	
 	
 	public boolean canAccess(CodeTree other)

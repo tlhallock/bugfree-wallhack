@@ -12,13 +12,14 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import poc.ide.code.Type.Clazz;
+import poc.ide.code.Clazz;
+import poc.ide.code.CodeTree;
 import poc.ide.gui.ClassViewer;
 import poc.ide.gui.Window;
 import poc.ide.proj.FsLocation;
 import poc.ide.proj.Project;
 
-public class AwtClassViewer extends ClassViewer
+class AwtClassViewer extends ClassViewer
 {
 	private JPanel panel;
 	
@@ -26,7 +27,7 @@ public class AwtClassViewer extends ClassViewer
 	
 	private GridLayout layout;
 	
-	public AwtClassViewer(Project project)
+	AwtClassViewer(Project project)
 	{
 		super(project);
 		
@@ -64,7 +65,17 @@ public class AwtClassViewer extends ClassViewer
 		
 		for (final Clazz type : types)
 		{
-			JLabel label = new JLabel(type.getParent().getNameSpaceUniqueKey());
+			CodeTree parent = type.getParent();
+			
+			JLabel label;
+			if (parent == null)
+			{
+				label = new JLabel("Not parent");
+			}
+			else
+			{
+				label = new JLabel(parent.getNameSpaceUniqueKey());
+			}
 			label.setBounds(50,50,50,50);
 			label.setVisible(true);
 			panel.add(label);

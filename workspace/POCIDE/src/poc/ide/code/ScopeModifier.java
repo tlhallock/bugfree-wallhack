@@ -3,7 +3,6 @@ package poc.ide.code;
 import java.util.LinkedList;
 import java.util.List;
 
-import poc.ide.code.ScopeModifier.Scoping;
 import poc.ide.gui.InputMethod;
 import poc.ide.gui.Window;
 
@@ -43,8 +42,6 @@ public class ScopeModifier extends CodeTree
 		super(parent);
 		scope = value;
 	}
-	
-
 
 	public Scoping getScope()
 	{
@@ -54,6 +51,7 @@ public class ScopeModifier extends CodeTree
 	public void setScope(Scoping scoping)
 	{
 		scope = scoping;
+		notifyObservers();
 	}
 
 	@Override
@@ -63,16 +61,10 @@ public class ScopeModifier extends CodeTree
 	}
 
 	@Override
-	protected void setParameter(String label, Object value)
-	{
-		scope = ((ScopeModifier) value).getScope();
-	}
-
-	@Override
 	public List<InputMethod<? extends CodeTree>> getInputs()
 	{
 		List<InputMethod<? extends CodeTree>> returnValue = new LinkedList<>();
-		returnValue.add(Window.guiFactory.createScopeInputMethod("slope", this));
+		returnValue.add(Window.getWindow().getGuiFactor().createScopeInputMethod("slope", this));
 		return returnValue;
 	}
 

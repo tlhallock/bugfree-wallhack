@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import poc.ide.code.CodeTree;
 import poc.ide.gui.Window;
 
-public class AwtSelectorInput<C extends CodeTree> extends AwtInputMethod<C> implements ActionListener
+class AwtSelectorInput<C extends CodeTree> extends AwtInputMethod<C> implements ActionListener
 {
 	private JPanel panel;
 	

@@ -1,24 +1,47 @@
 package poc.ide.gui;
 
 import poc.ide.awt.AwtGuiFactory;
-import poc.ide.code.Function;
+import poc.ide.proj.FsLocation;
+import poc.ide.proj.Project;
 
 
 public class Window
 {
-	Selector selector;
+	private GuiFactory guiFactory;
 	
-	public Window()
+	private Viewer viewer;
+	private Selector selector;
+	private ClassViewer cViewer;
+	
+	private Window()
 	{
-		selector = guiFactory.createSelector();
+		guiFactory = new AwtGuiFactory();
+		viewer = guiFactory.createViewer();
+		selector = guiFactory.createSelector(viewer);
+		cViewer = guiFactory.createClassViewer(new Project(new FsLocation("./")));
 	}
-
-	public static GuiFactory guiFactory = new AwtGuiFactory();
-	private static final Window window = new Window();
-	public static Window getWindow() { return window; }
-
+	
 	public Selector getSelector()
 	{
 		return selector;
 	}
+	
+	public Viewer getViewer()
+	{
+		return viewer;
+	}
+	
+	public ClassViewer getClassViewer()
+	{
+		return cViewer;
+	}
+	
+	public GuiFactory getGuiFactor()
+	{
+		return guiFactory;
+	}
+
+	private static final Window window = new Window();
+	public static Window getWindow() { return window; }
+
 }

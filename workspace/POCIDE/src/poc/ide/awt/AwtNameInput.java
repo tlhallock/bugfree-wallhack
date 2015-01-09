@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 
 import poc.ide.code.Name;
 
-public class AwtNameInput extends AwtInputMethod<Name>
+class AwtNameInput extends AwtInputMethod<Name>
 {
 	private JTextField field;
 	private JPanel panel;

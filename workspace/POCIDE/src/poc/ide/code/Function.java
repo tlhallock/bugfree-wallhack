@@ -55,8 +55,8 @@ public class Function extends CodeTree
 	{
 		List<InputMethod<? extends CodeTree>> returnValue = new LinkedList<>();
 		
-		returnValue.add(Window.guiFactory.createScopeInputMethod("Function Scope:", scope));
-		returnValue.add(Window.guiFactory.createNameInputMethod("Function Name:", name));
+		returnValue.add(Window.getWindow().getGuiFactor().createScopeInputMethod("Function Scope:", scope));
+		returnValue.add(Window.getWindow().getGuiFactor().createNameInputMethod("Function Name:", name));
 		
 		return returnValue;
 	}
