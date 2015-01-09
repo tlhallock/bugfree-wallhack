@@ -1,5 +1,3 @@
 package poc.ide.code;
 
-public class Statement {
-
-}
+public abstract class Statement extends CodeTree {}

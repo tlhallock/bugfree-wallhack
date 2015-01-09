@@ -6,9 +6,8 @@ import java.util.List;
 import poc.ide.gui.InputMethod;
 import poc.ide.gui.Viewer;
 
-public class NoCode extends CodeTree
+public class NotCode extends CodeTree
 {
-
 	@Override
 	public StringBuilder appendText(StringBuilder builder, int depth)
 	{

@@ -5,19 +5,21 @@ import java.util.List;
 
 import poc.ide.gui.InputMethod;
 
-public class Import extends CodeTree
+public class CompliationUnit extends CodeTree
 {
-	private String reference;
+	private List<Import> imports;
+	private List<Type> types;
 	
-	private Import(String ref)
+	public CompliationUnit()
 	{
-		reference = ref;
+		imports = new LinkedList<>();
+		types = new LinkedList<>();
 	}
-	
+
 	@Override
 	public StringBuilder appendText(StringBuilder builder, int depth)
 	{
-		return builder.append("import ").append(reference).append(";\n");
+		return builder;
 	}
 
 	@Override
@@ -27,4 +29,5 @@ public class Import extends CodeTree
 		
 		return returnValue;
 	}
+
 }

@@ -4,16 +4,14 @@ import java.util.Collections;
 import java.util.List;
 
 import poc.ide.gui.InputMethod;
-import poc.ide.main.Indenter;
 
-public class Continue extends CodeTree
+public class EmptyStatement extends Statement
 {
-	public Continue() {}
 
 	@Override
 	public StringBuilder appendText(StringBuilder builder, int depth)
 	{
-		return Indenter.indent(builder, depth).append("continue;\n");
+		return builder;
 	}
 
 	@Override
@@ -21,4 +19,5 @@ public class Continue extends CodeTree
 	{
 		return Collections.emptyList();
 	}
+
 }

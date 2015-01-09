@@ -20,7 +20,7 @@ public class AwtSelector extends Selector implements ActionListener
 	private JRootPane root;
 	private JButton done;
 	
-	List<InputMethod<? extends CodeTree>> inputs;
+	private List<InputMethod<? extends CodeTree>> inputs;
 	
 	AwtSelector(JRootPane root)
 	{

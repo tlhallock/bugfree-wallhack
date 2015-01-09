@@ -1,8 +1,8 @@
 package poc.ide.code;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-
 
 import poc.ide.gui.InputMethod;
 import poc.ide.gui.Window;
@@ -38,12 +38,12 @@ public abstract class Type extends CodeTree
 		private ScopeModifier scope;
 		private Package pack4ge;
 		
-		private final List<Variable> variables   ;
-		private final List<Function> functions   ;
-		private final List<Type>     parameters  ;
-		private final List<Type>     innerClasses;
-		private final List<Block>    blocks      ;
-		private final List<Block>    staticBlocks;
+		private final List<Declaration<? extends Type>>  variables   ;
+		private final List<Function>                     functions   ;
+		private final List<Type>                         parameters  ;
+		private final List<Type>                         innerClasses;
+		private final List<Block>                        blocks      ;
+		private final List<Block>                        staticBlocks;
 		
 		public Clazz(String name)
 		{
@@ -53,12 +53,12 @@ public abstract class Type extends CodeTree
 			
 			scope = new ScopeModifier(ScopeModifier.Scoping.Public);
 			
-			variables    = new LinkedList<Variable> ();  
-			functions    = new LinkedList<Function> ();  
-			parameters   = new LinkedList<Type>     ();  
-			innerClasses = new LinkedList<Type>     ();  
-			blocks       = new LinkedList<Block>    ();  
-			staticBlocks = new LinkedList<Block>    ();  
+			variables    = new LinkedList<Declaration<? extends Type>> ();  
+			functions    = new LinkedList<Function>                    ();  
+			parameters   = new LinkedList<Type>                        ();  
+			innerClasses = new LinkedList<Type>                        ();  
+			blocks       = new LinkedList<Block>                       ();  
+			staticBlocks = new LinkedList<Block>                       ();  
 		}
 
 		@Override
@@ -93,18 +93,20 @@ public abstract class Type extends CodeTree
 	}
 	
 
-	public static final class Primitive extends Type
+	public static class Primitive extends Type
 	{
-		private Primitive(String name) { super(name); }
+		private static HashMap<String, String> names = new HashMap<String, String>();
+		protected Primitive(String name) { super(name); }
 		
-		public static Primitive IntegerType = new Primitive("int");
-		public static Primitive DoubleType  = new Primitive("double");
-		public static Primitive Float       = new Primitive("float");
-		public static Primitive ShortType   = new Primitive("short");
-		public static Primitive ByteType    = new Primitive("byte");
-		public static Primitive CharType    = new Primitive("char");
-		public static Primitive LongType    = new Primitive("long");
-		public static Primitive VoidType    = new Primitive("void");
+		public static final class IntegerType extends Primitive { public static IntegerType implementation = new IntegerType(); private IntegerType() { super("int");    } };
+		public static final class DoubleType  extends Primitive { public static DoubleType  implementation = new DoubleType (); private DoubleType () { super("double"); } };
+		public static final class Float       extends Primitive { public static Float       implementation = new Float      (); private Float      () { super("float");  } };
+		public static final class ShortType   extends Primitive { public static ShortType   implementation = new ShortType  (); private ShortType  () { super("short");  } };
+		public static final class ByteType    extends Primitive { public static ByteType    implementation = new ByteType   (); private ByteType   () { super("byte");   } };
+		public static final class CharType    extends Primitive { public static CharType    implementation = new CharType   (); private CharType   () { super("char");   } };
+		public static final class LongType    extends Primitive { public static LongType    implementation = new LongType   (); private LongType   () { super("long");   } };
+		public static final class VoidType    extends Primitive { public static VoidType    implementation = new VoidType   (); private VoidType   () { super("void");   } };
+		public static final class BooleanType extends Primitive { public static BooleanType implementation = new BooleanType(); private BooleanType() { super("boolean");} };
 		
 		@Override
 		public List<InputMethod<? extends CodeTree>> getInputs()

@@ -1,24 +1,27 @@
 package poc.ide.code;
 
-import java.util.Collections;
 import java.util.List;
 
 import poc.ide.gui.InputMethod;
-import poc.ide.main.Indenter;
 
-public class Continue extends CodeTree
+public class Modifier extends CodeTree
 {
-	public Continue() {}
+	// final
+	// abstract
+	// static
+	// native
+	// transient
 
 	@Override
 	public StringBuilder appendText(StringBuilder builder, int depth)
 	{
-		return Indenter.indent(builder, depth).append("continue;\n");
+		return null;
 	}
 
 	@Override
 	public List<InputMethod<? extends CodeTree>> getInputs()
 	{
-		return Collections.emptyList();
+		return null;
 	}
+
 }

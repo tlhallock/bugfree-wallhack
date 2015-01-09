@@ -34,7 +34,7 @@ public abstract class CodeTree implements Comparable<CodeTree>
 		return builder.append(getUniqueNamespaceToken());
 	}
 	
-	public abstract String getUniqueNamespaceToken();
+	public String getUniqueNamespaceToken() { return ""; }
 	
 	public CodeTree(CodeTree parent)
 	{
@@ -88,7 +88,7 @@ public abstract class CodeTree implements Comparable<CodeTree>
 
 	public abstract StringBuilder appendText(StringBuilder builder, int depth);
 	
-	protected abstract void setParameter(String label, Object value);
+	protected void setParameter(String label, Object value) {};
 	
 	public abstract List<InputMethod<? extends CodeTree>> getInputs();
 	

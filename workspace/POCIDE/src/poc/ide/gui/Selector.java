@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import poc.ide.code.CodeTree;
-import poc.ide.code.NoCode;
+import poc.ide.code.NotCode;
 
 public abstract class Selector
 {
@@ -46,7 +46,7 @@ public abstract class Selector
 	{
 		if (stack.isEmpty())
 		{
-			return new NoCode();
+			return new NotCode();
 		}
 		
 		return stack.peek();

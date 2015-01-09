@@ -12,8 +12,11 @@ public class Function extends CodeTree
 {
 	private Name name;
 	private ScopeModifier scope;
+	
+	// The are declarations...
 	private Type[] argTypes;
 	private Name[] argNames;
+	
 	private Type returnType;
 	private List<Type> exceptions;
 	
@@ -33,7 +36,7 @@ public class Function extends CodeTree
 		
 		argTypes = new Type[0];
 		argNames = new Name[0];
-		returnType = Type.Primitive.VoidType;
+		returnType = Type.Primitive.VoidType.implementation;
 	}
 	
 	public StringBuilder appendText(StringBuilder builder, int depth)
@@ -44,9 +47,6 @@ public class Function extends CodeTree
 		builder.append("()\n{\n\t\n}");
 		return builder;
 	}
-	
-	@Override
-	public void setParameter(String label, Object value) {}
 	
 	@Override
 	public List<InputMethod<? extends CodeTree>> getInputs()
@@ -73,7 +73,6 @@ public class Function extends CodeTree
 		
 		return builder.toString();
 	}
-	
 }
 
 
