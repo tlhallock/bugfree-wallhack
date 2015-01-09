@@ -46,7 +46,7 @@ public abstract class Selector
 	{
 		if (stack.isEmpty())
 		{
-			return new NotCode();
+			return new NotCode(null);
 		}
 		
 		return stack.peek();

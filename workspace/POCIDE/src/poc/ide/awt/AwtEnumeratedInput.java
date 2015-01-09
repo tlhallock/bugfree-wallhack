@@ -11,7 +11,7 @@ import javax.swing.SpinnerListModel;
 
 import poc.ide.code.CodeTree;
 
-public abstract class AwtEnumeratedInput<C extends CodeTree> extends AwtInputMethod<C>
+public abstract class AwtEnumeratedInput<C extends CodeTree, EN> extends AwtInputMethod<C>
 {
 	private JPanel panel;
 	private JSpinner spinner;
@@ -44,13 +44,11 @@ public abstract class AwtEnumeratedInput<C extends CodeTree> extends AwtInputMet
 		return panel;
 	}
 
-	@Override
-	public C getInput()
+	protected abstract EN getCode(String name);
+	protected EN getCode()
 	{
 		return getCode((String) spinner.getValue());  
 	}
-
-	protected abstract C getCode(String name);
 
 	
 	

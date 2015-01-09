@@ -16,12 +16,13 @@ public class For extends CodeTree
 	
 	private Block block;
 	
-	public For()
+	public For(CodeTree parent)
 	{
-		condition = BooleanExpression.FALSE;
-		block = new Block();
-		increment= new EmptyStatement();
-		block = new Block();
+		super(parent);
+		condition = BooleanExpression.getFalse(this);
+		block = new Block(this);
+		increment= new EmptyStatement(this);
+		block = new Block(this);
 	}
 
 	@Override

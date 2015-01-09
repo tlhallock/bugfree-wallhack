@@ -40,8 +40,9 @@ public class AwtNameInput extends AwtInputMethod<Name>
 	}
 
 	@Override
-	public Name getInput() {
-		return new Name(field.getText());
+	public void assign()
+	{
+		code.setName(field.getText());
 	}
 
 	@Override

@@ -11,14 +11,29 @@ public abstract class CodeTree implements Comparable<CodeTree>
 	private List<Viewer> viewers;
 	private CodeTree parent;
 	
-	private String comment;
+	private Comment comment;
 	
 	// something about the FsSource...
-	
-	public CodeTree()
+
+	public CodeTree(CodeTree parent)
 	{
 		this.viewers = new LinkedList<Viewer>();
+		this.parent = parent;
 	}
+	
+	void setParent(CodeTree parent)
+	{
+		this.parent = parent;
+	}
+	
+	public CodeTree getParent()
+	{
+		return parent;
+	}
+	
+	
+	
+	
 	
 	public final String getNameSpaceUniqueKey()
 	{
@@ -36,16 +51,11 @@ public abstract class CodeTree implements Comparable<CodeTree>
 	
 	public String getUniqueNamespaceToken() { return ""; }
 	
-	public CodeTree(CodeTree parent)
-	{
-		this();
-		this.parent = parent;
-	}
 	
-	void setParent(CodeTree parent)
-	{
-		this.parent = parent;
-	}
+	
+	
+	
+	
 
 	public void addViewer(Viewer viewer)
 	{
@@ -79,24 +89,25 @@ public abstract class CodeTree implements Comparable<CodeTree>
 		}
 	}
 	
+	
+	
 
 	public void updateParameter(String label, Object value)
 	{
 		setParameter(label, value);
 		changed();
 	}
-
-	public abstract StringBuilder appendText(StringBuilder builder, int depth);
-	
 	protected void setParameter(String label, Object value) {};
 	
-//	public abstract void appendInputs(List<InputMethod<? extends CodeTree>> list);
-	public abstract List<InputMethod<? extends CodeTree>> getInputs();
 	
 	public boolean canAccess(CodeTree other)
 	{
 		return true;
 	}
+	
+	
+	
+	
 	
 	
 	public int hashCode()
@@ -118,4 +129,9 @@ public abstract class CodeTree implements Comparable<CodeTree>
 
 		return compareTo((CodeTree) o) < 0;
 	}
+	
+
+//	public abstract void appendInputs(List<InputMethod<? extends CodeTree>> list);
+	public abstract List<InputMethod<? extends CodeTree>> getInputs();
+	public abstract StringBuilder appendText(StringBuilder builder, int depth);
 }

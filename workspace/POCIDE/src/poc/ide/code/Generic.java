@@ -7,6 +7,11 @@ import poc.ide.gui.InputMethod;
 
 public class Generic extends CodeTree
 {
+	public Generic(CodeTree parent)
+	{
+		super(parent);
+	}
+	
 	@Override
 	public StringBuilder appendText(StringBuilder builder, int depth)
 	{

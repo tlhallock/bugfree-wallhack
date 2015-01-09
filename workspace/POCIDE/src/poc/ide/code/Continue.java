@@ -8,7 +8,10 @@ import poc.ide.main.Indenter;
 
 public class Continue extends CodeTree
 {
-	public Continue() {}
+	public Continue(CodeTree parent)
+	{
+		super(parent);
+	}
 
 	@Override
 	public StringBuilder appendText(StringBuilder builder, int depth)

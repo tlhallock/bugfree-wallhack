@@ -7,6 +7,10 @@ import poc.ide.gui.InputMethod;
 
 public class EmptyStatement extends Statement
 {
+	public EmptyStatement(CodeTree parent)
+	{
+		super(parent);
+	}
 
 	@Override
 	public StringBuilder appendText(StringBuilder builder, int depth)

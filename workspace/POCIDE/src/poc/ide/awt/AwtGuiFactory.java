@@ -42,14 +42,20 @@ public class AwtGuiFactory extends GuiFactory
 	@Override
 	public InputMethod<ScopeModifier> createScopeInputMethod(String string, ScopeModifier scope)
  {
-		return new AwtEnumeratedInput<ScopeModifier>(
+		return new AwtEnumeratedInput<ScopeModifier, ScopeModifier.Scoping>(
 				string,
 				scope,
 				AwtEnumeratedInput.getNames(Scoping.values()),
 				scope.getScope().name()) {
 			@Override
-			protected ScopeModifier getCode(String name) {
-				return new ScopeModifier(AwtEnumeratedInput.getValue(Scoping.values(), name));
+			protected ScopeModifier.Scoping getCode(String name) {
+				return AwtEnumeratedInput.getValue(Scoping.values(), name);
+			}
+
+			@Override
+			public void assign()
+			{
+				code.setScope(getCode());
 			}
 		};
 	}

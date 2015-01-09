@@ -8,8 +8,12 @@ import poc.ide.main.Indenter;
 
 public class Throw extends CodeTree
 {
-	
 	private Expression expr;
+	
+	public Throw(CodeTree parent)
+	{
+		super(parent);
+	}
 
 	@Override
 	public StringBuilder appendText(StringBuilder builder, int depth)

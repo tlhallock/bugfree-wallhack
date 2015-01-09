@@ -7,13 +7,17 @@ import poc.ide.gui.InputMethod;
 
 public class CompliationUnit extends CodeTree
 {
+	private Package pack4ge;
+	
 	private List<Import> imports;
 	private List<Type> types;
 	
-	public CompliationUnit()
+	public CompliationUnit(CodeTree parent)
 	{
+		super(parent);
 		imports = new LinkedList<>();
 		types = new LinkedList<>();
+		pack4ge = new Package(this);
 	}
 
 	@Override

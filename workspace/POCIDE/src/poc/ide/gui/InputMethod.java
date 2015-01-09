@@ -13,11 +13,6 @@ public abstract class InputMethod<T extends CodeTree>
 		this.code = code;
 	}
 	
-	public void assign()
-	{
-		code.updateParameter(label, getInput());
-	}
-	
-	public abstract T getInput();
+	public abstract void assign();
 
 }

@@ -11,6 +11,11 @@ public class Modifier extends CodeTree
 	// static
 	// native
 	// transient
+	
+	public Modifier(CodeTree parent)
+	{
+		super(parent);
+	}
 
 	@Override
 	public StringBuilder appendText(StringBuilder builder, int depth)

@@ -10,13 +10,14 @@ public class Name extends CodeTree
 {
 	private String name;
 	
-	public Name()
+	public Name(CodeTree parent)
 	{
-		this("unnamed");
+		this(parent, "unnamed");
 	}
 	
-	public Name(String name)
+	public Name(CodeTree parent, String name)
 	{
+		super(parent);
 		this.name = name;
 	}
 	
@@ -49,5 +50,10 @@ public class Name extends CodeTree
 	public String getUniqueNamespaceToken()
 	{
 		return name;
+	}
+
+	public void setName(String text)
+	{
+		name = text;
 	}
 }

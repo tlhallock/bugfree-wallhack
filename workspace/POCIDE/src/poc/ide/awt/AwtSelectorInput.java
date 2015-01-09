@@ -43,16 +43,11 @@ public class AwtSelectorInput<C extends CodeTree> extends AwtInputMethod<C> impl
 		return panel;
 	}
 
-	@Override
-	public C getInput()
-	{
-		return code;
-	}
+	public void assign() {}
 
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
 		Window.getWindow().getSelector().push(code);
 	}
-
 }

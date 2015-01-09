@@ -10,8 +10,9 @@ public class Block extends CodeTree
 {
 	private List<CodeTree> code;
 	
-	public Block()
+	public Block(CodeTree parent)
 	{
+		super(parent);
 		code = new LinkedList<>();
 	}
 

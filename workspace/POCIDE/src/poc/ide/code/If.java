@@ -21,10 +21,12 @@ public class If extends CodeTree
 	private List<ElseIf> elseIfs;
 	private Block otherwise;
 
-	public If()
+	public If(CodeTree parent)
 	{
-		condition = BooleanExpression.TRUE;
-		then = new Block();
+		super(parent);
+		
+		condition = BooleanExpression.getTrue(this);
+		then = new Block(this);
 		elseIfs = new LinkedList<>();
 		otherwise = null;
 	}

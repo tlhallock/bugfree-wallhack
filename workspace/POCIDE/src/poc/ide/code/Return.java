@@ -10,7 +10,7 @@ public class Return<T extends Type> extends CodeTree
 {
 	private Expression<T> expr;
 	
-	public Return(T t) {}
+	public Return(CodeTree p, T t) { super(p); }
 	
 	public void setValue(Expression<T> expr)
 	{

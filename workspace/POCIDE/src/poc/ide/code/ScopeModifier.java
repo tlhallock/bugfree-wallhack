@@ -31,16 +31,29 @@ public class ScopeModifier extends CodeTree
 		}
 	}
 	
-	Scoping scope;
+	private Scoping scope;
 	
-	public ScopeModifier()
+	public ScopeModifier(CodeTree parent)
 	{
-		this(Scoping.Private);
+		this(parent, Scoping.Private);
 	}
 	
-	public ScopeModifier(Scoping value)
+	public ScopeModifier(CodeTree parent, Scoping value)
 	{
+		super(parent);
 		scope = value;
+	}
+	
+
+
+	public Scoping getScope()
+	{
+		return scope;
+	}
+	
+	public void setScope(Scoping scoping)
+	{
+		scope = scoping;
 	}
 
 	@Override
@@ -53,11 +66,6 @@ public class ScopeModifier extends CodeTree
 	protected void setParameter(String label, Object value)
 	{
 		scope = ((ScopeModifier) value).getScope();
-	}
-
-	public Scoping getScope()
-	{
-		return scope;
 	}
 
 	@Override

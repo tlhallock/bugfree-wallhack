@@ -8,6 +8,11 @@ import poc.ide.gui.Viewer;
 
 public class NotCode extends CodeTree
 {
+	public NotCode(CodeTree parent)
+	{
+		super(parent);
+	}
+	
 	@Override
 	public StringBuilder appendText(StringBuilder builder, int depth)
 	{
@@ -15,11 +20,12 @@ public class NotCode extends CodeTree
 	}
 
 	@Override
-	protected void setParameter(String label, Object value) {}
-
-	@Override
 	public List<InputMethod<? extends CodeTree>> getInputs() { return Collections.emptyList(); }
 	
+	/**
+	 * Do not have any viewers...
+	 */
+	@Override
 	public void addViewer(Viewer v) {}
 
 	@Override

@@ -9,8 +9,9 @@ public class Package extends CodeTree
 {
 	private Name[] name;
 	
-	public Package()
+	public Package(CodeTree parent)
 	{
+		super(parent);
 		name = new Name[0];
 	}
 
@@ -34,7 +35,7 @@ public class Package extends CodeTree
 		name = new Name[split.length];
 		for (int i = 0; i < split.length; i++)
 		{
-			name[i] = new Name(split[i]);
+			name[i] = new Name(this, split[i]);
 		}
 	}
 

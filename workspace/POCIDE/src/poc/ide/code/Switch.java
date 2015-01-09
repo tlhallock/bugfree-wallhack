@@ -15,8 +15,9 @@ public class Switch<T extends Type> extends CodeTree
 	private Map<Expression<T>, Block> cases;
 	private Block otherwise;
 	
-	public Switch()
+	public Switch(CodeTree parent)
 	{
+		super(parent);
 		cases = new HashMap<>();
 		otherwise = null;
 	}

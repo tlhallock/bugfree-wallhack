@@ -9,8 +9,9 @@ public class Import extends CodeTree
 {
 	private String reference;
 	
-	private Import(String ref)
+	private Import(CodeTree parent, String ref)
 	{
+		super(parent);
 		reference = ref;
 	}
 	

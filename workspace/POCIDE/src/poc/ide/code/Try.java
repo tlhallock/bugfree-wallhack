@@ -19,10 +19,11 @@ public class Try extends CodeTree
 	private List<Catch> catches;
 	private Block atLast;
 	
-	public Try()
+	public Try(CodeTree parent)
 	{
+		super(parent);
 		resources = new LinkedList<>();
-		attempt = new Block();
+		attempt = new Block(this);
 		catches = new LinkedList<>();
 		atLast = null;
 	}

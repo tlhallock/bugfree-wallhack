@@ -12,10 +12,11 @@ public class While extends CodeTree
 	private Block block;
 	private Expression<Type.Primitive.BooleanType> whileExpr;
 	
-	public While()
+	public While(CodeTree parent)
 	{
-		block = new Block();
-		whileExpr = BooleanExpression.FALSE;
+		super(parent);
+		block = new Block(this);
+		whileExpr = BooleanExpression.getFalse(this);
 	}
 
 	@Override

@@ -11,11 +11,15 @@ public abstract class Type extends CodeTree
 {
 	protected Name name;
 
-	public Type() {}
-	
-	public Type(String name)
+	public Type(CodeTree parent)
 	{
-		this.name = new Name(name);
+		super(parent);
+	}
+	
+	public Type(CodeTree parent, String name)
+	{
+		super(parent);
+		this.name = new Name(this, name);
 	}
 
 	@Override
@@ -36,7 +40,6 @@ public abstract class Type extends CodeTree
 	public static class Clazz extends Type
 	{
 		private ScopeModifier scope;
-		private Package pack4ge;
 		
 		private final List<Declaration<? extends Type>>  variables   ;
 		private final List<Function>                     functions   ;
@@ -45,13 +48,11 @@ public abstract class Type extends CodeTree
 		private final List<Block>                        blocks      ;
 		private final List<Block>                        staticBlocks;
 		
-		public Clazz(String name)
+		public Clazz(CompliationUnit u, String name)
 		{
-			super(name);
+			super(u, name);
 			
-			pack4ge = new Package();
-			
-			scope = new ScopeModifier(ScopeModifier.Scoping.Public);
+			scope = new ScopeModifier(this, ScopeModifier.Scoping.Public);
 			
 			variables    = new LinkedList<Declaration<? extends Type>> ();  
 			functions    = new LinkedList<Function>                    ();  
@@ -70,11 +71,6 @@ public abstract class Type extends CodeTree
 			returnValue.add(Window.guiFactory.createNameInputMethod("Class name:", name));
 			
 			return returnValue;
-		}
-
-		public Package getPackage()
-		{
-			return pack4ge;
 		}
 
 		public String getName()
@@ -96,7 +92,7 @@ public abstract class Type extends CodeTree
 	public static class Primitive extends Type
 	{
 		private static HashMap<String, String> names = new HashMap<String, String>();
-		protected Primitive(String name) { super(name); }
+		protected Primitive(String name) { super(null, name); }
 		
 		public static final class IntegerType extends Primitive { public static IntegerType implementation = new IntegerType(); private IntegerType() { super("int");    } };
 		public static final class DoubleType  extends Primitive { public static DoubleType  implementation = new DoubleType (); private DoubleType () { super("double"); } };

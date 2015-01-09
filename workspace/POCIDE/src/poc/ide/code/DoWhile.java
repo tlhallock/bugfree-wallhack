@@ -12,10 +12,11 @@ public class DoWhile extends CodeTree
 	private Block block;
 	private Expression<Type.Primitive.BooleanType> whileExpr;
 	
-	public DoWhile()
+	public DoWhile(CodeTree parent)
 	{
-		block = new Block();
-		whileExpr = BooleanExpression.FALSE;
+		super(parent);
+		block = new Block(this);
+		whileExpr = BooleanExpression.getTrue(this);
 	}
 
 	@Override

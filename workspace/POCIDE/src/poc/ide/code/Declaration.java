@@ -11,10 +11,11 @@ public class Declaration<T extends Type> extends CodeTree
 	private Name v;
 	T t;
 	
-	public Declaration(T t)
+	public Declaration(CodeTree parent, T t)
 	{
+		super(parent);
 		this.t = t;
-		v = new Name("foobar");
+		v = new Name(this, "foobar");
 	}
 
 	@Override

@@ -26,12 +26,14 @@ public class Function extends CodeTree
 	Type generic;
 
 	
-	public Function()
+	public Function(CodeTree parent)
 	{
-		name = new Name("newfunction");
+		super(parent);
+		
+		name = new Name(this, "newfunction");
 		name.setParent(this);
 		
-		scope = new ScopeModifier(Scoping.Public);
+		scope = new ScopeModifier(this, Scoping.Public);
 		scope.setParent(this);
 		
 		argTypes = new Type[0];

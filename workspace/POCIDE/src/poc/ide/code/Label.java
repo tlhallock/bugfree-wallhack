@@ -10,8 +10,9 @@ public class Label extends CodeTree
 {
 	private Name name;
 	
-	public Label(Name name)
+	public Label(CodeTree parent, Name name)
 	{
+		super(parent);
 		this.name = name;
 		name.setParent(this);
 	}

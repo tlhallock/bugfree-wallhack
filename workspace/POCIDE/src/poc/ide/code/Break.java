@@ -10,10 +10,14 @@ public class Break extends CodeTree
 {
 	private Label label;
 	
-	public Break() {}
-	
-	public Break(Label label)
+	public Break(CodeTree parent)
 	{
+		super(parent);
+	}
+	
+	public Break(CodeTree parent, Label label)
+	{
+		this(parent);
 		this.label = label;
 	}
 

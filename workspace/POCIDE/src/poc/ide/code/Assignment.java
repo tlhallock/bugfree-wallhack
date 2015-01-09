@@ -11,9 +11,10 @@ public class Assignment<T extends Type> extends Expression<T>
 	private Name variable;
 	private Expression<T> expr;
 	
-	public Assignment()
+	public Assignment(CodeTree parent)
 	{
-		variable = new Name();
+		super(parent);
+		variable = new Name(this);
 	}
 
 	@Override

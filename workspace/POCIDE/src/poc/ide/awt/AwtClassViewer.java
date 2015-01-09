@@ -44,7 +44,7 @@ public class AwtClassViewer extends ClassViewer
 			public void actionPerformed(ActionEvent arg0)
 			{
 				FsLocation next = getProject().getSources().iterator().next();
-				Clazz clazz = new Clazz("DaNewClass");
+				Clazz clazz = new Clazz(null, "DaNewClass");
 				getProject().getCodeSet().add(clazz);
 				Window.getWindow().getSelector().push(clazz);
 				
@@ -64,7 +64,7 @@ public class AwtClassViewer extends ClassViewer
 		
 		for (final Clazz type : types)
 		{
-			JLabel label = new JLabel(type.getPackage().collect());
+			JLabel label = new JLabel(type.getParent().getNameSpaceUniqueKey());
 			label.setBounds(50,50,50,50);
 			label.setVisible(true);
 			panel.add(label);
