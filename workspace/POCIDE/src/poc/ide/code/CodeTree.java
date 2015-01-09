@@ -90,9 +90,8 @@ public abstract class CodeTree implements Comparable<CodeTree>
 	
 	protected void setParameter(String label, Object value) {};
 	
+//	public abstract void appendInputs(List<InputMethod<? extends CodeTree>> list);
 	public abstract List<InputMethod<? extends CodeTree>> getInputs();
-	
-	
 	
 	public boolean canAccess(CodeTree other)
 	{

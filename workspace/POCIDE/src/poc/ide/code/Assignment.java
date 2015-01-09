@@ -6,10 +6,10 @@ import java.util.List;
 import poc.ide.gui.InputMethod;
 import poc.ide.main.Indenter;
 
-public class Assignment extends CodeTree
+public class Assignment<T extends Type> extends Expression<T>
 {
 	private Name variable;
-	private Expression expr;
+	private Expression<T> expr;
 	
 	public Assignment()
 	{
