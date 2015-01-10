@@ -3,14 +3,14 @@ package poc.ide.code;
 import java.util.LinkedList;
 import java.util.List;
 
+import poc.ide.code.util.Indenter;
 import poc.ide.gui.InputMethod;
-import poc.ide.main.Indenter;
 
-public class Block extends CodeTree
+public class Block extends Code
 {
-	private List<CodeTree> code;
+	private List<Code> code;
 	
-	public Block(CodeTree parent)
+	public Block(Code parent)
 	{
 		super(parent);
 		code = new LinkedList<>();
@@ -20,7 +20,7 @@ public class Block extends CodeTree
 	public StringBuilder appendText(StringBuilder builder, int depth)
 	{
 		Indenter.indent(builder, depth).append("{\n");
-		for (CodeTree tree : code)
+		for (Code tree : code)
 		{
 			tree.appendText(builder, depth + 1);
 		}
@@ -30,12 +30,12 @@ public class Block extends CodeTree
 	}
 
 	@Override
-	public List<InputMethod<? extends CodeTree>> getInputs()
+	public List<InputMethod<? extends Code>> getInputs()
 	{
-		List<InputMethod<? extends CodeTree>> returnValue = new LinkedList<>();
+		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
 		
 		int i = 0;
-		for (CodeTree tree : code)
+		for (Code tree : code)
 		{
 			returnValue.addAll(tree.getInputs());
 		}

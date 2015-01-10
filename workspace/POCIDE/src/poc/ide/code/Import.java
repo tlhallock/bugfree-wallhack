@@ -5,11 +5,13 @@ import java.util.List;
 
 import poc.ide.gui.InputMethod;
 
-public class Import extends CodeTree
+public class Import extends Code
 {
+	public static final Import implementation = new Import(null, null);
+	
 	private String reference;
 	
-	private Import(CodeTree parent, String ref)
+	public Import(Code parent, String ref)
 	{
 		super(parent);
 		reference = ref;
@@ -22,9 +24,9 @@ public class Import extends CodeTree
 	}
 
 	@Override
-	public List<InputMethod<? extends CodeTree>> getInputs()
+	public List<InputMethod<? extends Code>> getInputs()
 	{
-		List<InputMethod<? extends CodeTree>> returnValue = new LinkedList<>();
+		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
 		
 		return returnValue;
 	}

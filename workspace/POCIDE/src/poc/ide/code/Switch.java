@@ -6,16 +6,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import poc.ide.code.util.Indenter;
 import poc.ide.gui.InputMethod;
-import poc.ide.main.Indenter;
 
-public class Switch<T extends Type> extends CodeTree
+public class Switch<T extends Type> extends Code
 {
 	private Expression<T> expr;
 	private Map<Expression<T>, Block> cases;
 	private Block otherwise;
 	
-	public Switch(CodeTree parent)
+	public Switch(Code parent)
 	{
 		super(parent);
 		cases = new HashMap<>();
@@ -46,9 +46,9 @@ public class Switch<T extends Type> extends CodeTree
 	}
 
 	@Override
-	public List<InputMethod<? extends CodeTree>> getInputs()
+	public List<InputMethod<? extends Code>> getInputs()
 	{
-		List<InputMethod<? extends CodeTree>> returnValue = new LinkedList<>();
+		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
 		
 		return returnValue;
 	}

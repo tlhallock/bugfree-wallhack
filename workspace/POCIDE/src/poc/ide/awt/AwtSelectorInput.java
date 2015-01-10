@@ -9,10 +9,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import poc.ide.code.CodeTree;
+import poc.ide.code.Code;
+import poc.ide.gui.InputMethod;
 import poc.ide.gui.Window;
 
-class AwtSelectorInput<C extends CodeTree> extends AwtInputMethod<C> implements ActionListener
+class AwtSelectorInput<C extends Code> extends InputMethod<C> implements ActionListener, AwtInputMethod
 {
 	private JPanel panel;
 	
@@ -38,7 +39,7 @@ class AwtSelectorInput<C extends CodeTree> extends AwtInputMethod<C> implements 
 	}
 
 	@Override
-	Component getComponent()
+	public Component getComponent()
 	{
 		return panel;
 	}

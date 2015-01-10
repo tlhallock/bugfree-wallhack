@@ -1,4 +1,4 @@
-package poc.ide.main;
+package poc.ide.code.util;
 
 public class Indenter
 {

@@ -3,15 +3,15 @@ package poc.ide.code;
 import java.util.LinkedList;
 import java.util.List;
 
+import poc.ide.code.util.Indenter;
 import poc.ide.gui.InputMethod;
-import poc.ide.main.Indenter;
 
 public class Assignment<T extends Type> extends Expression<T>
 {
 	private Name variable;
 	private Expression<T> expr;
 	
-	public Assignment(CodeTree parent)
+	public Assignment(Code parent)
 	{
 		super(parent);
 		variable = new Name(this);
@@ -30,9 +30,9 @@ public class Assignment<T extends Type> extends Expression<T>
 
 
 	@Override
-	public List<InputMethod<? extends CodeTree>> getInputs()
+	public List<InputMethod<? extends Code>> getInputs()
 	{
-		List<InputMethod<? extends CodeTree>> returnValue = new LinkedList<>();
+		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
 		
 		
 		return returnValue;

@@ -9,9 +9,10 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerListModel;
 
-import poc.ide.code.CodeTree;
+import poc.ide.code.Code;
+import poc.ide.gui.InputMethod;
 
-abstract class AwtEnumeratedInput<C extends CodeTree, EN> extends AwtInputMethod<C>
+abstract class AwtEnumeratedInput<C extends Code, EN> extends InputMethod<C> implements AwtInputMethod
 {
 	private JPanel panel;
 	private JSpinner spinner;
@@ -39,7 +40,7 @@ abstract class AwtEnumeratedInput<C extends CodeTree, EN> extends AwtInputMethod
 	}
 	
 	@Override
-	Component getComponent()
+	public Component getComponent()
 	{
 		return panel;
 	}

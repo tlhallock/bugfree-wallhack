@@ -3,11 +3,13 @@ package poc.ide.awt;
 import javax.swing.JFrame;
 import javax.swing.JRootPane;
 
-import poc.ide.code.CodeTree;
+import poc.ide.code.Code;
 import poc.ide.code.Name;
 import poc.ide.code.ScopeModifier;
 import poc.ide.code.ScopeModifier.Scoping;
+import poc.ide.code.util.CodeGenerators.CodeGenerator;
 import poc.ide.gui.ClassViewer;
+import poc.ide.gui.GeneratorInput;
 import poc.ide.gui.GuiFactory;
 import poc.ide.gui.InputMethod;
 import poc.ide.gui.Selector;
@@ -61,16 +63,22 @@ public class AwtGuiFactory extends GuiFactory
 	}
 
 	@Override
-	public <T extends CodeTree> InputMethod<T> createChildInputMethod(String string, T child)
+	public <T extends Code> InputMethod<T> createChildInputMethod(String string, T child)
 	{
 		return new AwtSelectorInput<T>(string, child);
 	}
 
 	@Override
-	public ClassViewer createClassViewer(Project project)
+	public ClassViewer createClassViewer()
 	{
-		AwtClassViewer awtClassViewer = new AwtClassViewer(project);
+		AwtClassViewer awtClassViewer = new AwtClassViewer();
 		AwtUtil.createWindow("Class View", awtClassViewer.getComponent());
 		return awtClassViewer;
+	}
+
+	@Override
+	public GeneratorInput createGeneratorInputMethod(Code parent, Code child, CodeGenerator<? extends Code> generator)
+	{
+		return new AwtGenerateInput(parent, child, generator);
 	}
 }

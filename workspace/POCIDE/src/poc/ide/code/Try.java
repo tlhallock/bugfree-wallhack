@@ -3,10 +3,10 @@ package poc.ide.code;
 import java.util.LinkedList;
 import java.util.List;
 
+import poc.ide.code.util.Indenter;
 import poc.ide.gui.InputMethod;
-import poc.ide.main.Indenter;
 
-public class Try extends CodeTree
+public class Try extends Code
 {
 	private static final class Catch
 	{
@@ -19,7 +19,7 @@ public class Try extends CodeTree
 	private List<Catch> catches;
 	private Block atLast;
 	
-	public Try(CodeTree parent)
+	public Try(Code parent)
 	{
 		super(parent);
 		resources = new LinkedList<>();
@@ -46,9 +46,9 @@ public class Try extends CodeTree
 	}
 
 	@Override
-	public List<InputMethod<? extends CodeTree>> getInputs()
+	public List<InputMethod<? extends Code>> getInputs()
 	{
-		List<InputMethod<? extends CodeTree>> returnValue = new LinkedList<>();
+		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
 		
 		
 		return returnValue;

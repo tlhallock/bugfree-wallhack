@@ -8,8 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import poc.ide.code.Name;
+import poc.ide.gui.InputMethod;
 
-class AwtNameInput extends AwtInputMethod<Name>
+class AwtNameInput extends InputMethod<Name> implements AwtInputMethod
 {
 	private JTextField field;
 	private JPanel panel;
@@ -46,7 +47,7 @@ class AwtNameInput extends AwtInputMethod<Name>
 	}
 
 	@Override
-	Component getComponent()
+	public Component getComponent()
 	{
 		return panel;
 	}

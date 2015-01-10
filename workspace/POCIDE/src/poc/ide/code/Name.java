@@ -6,16 +6,16 @@ import java.util.List;
 import poc.ide.gui.InputMethod;
 import poc.ide.gui.Window;
 
-public class Name extends CodeTree
+public class Name extends Code
 {
 	private String name;
 	
-	public Name(CodeTree parent)
+	public Name(Code parent)
 	{
 		this(parent, "unnamed");
 	}
 	
-	public Name(CodeTree parent, String name)
+	public Name(Code parent, String name)
 	{
 		super(parent);
 		this.name = name;
@@ -33,10 +33,10 @@ public class Name extends CodeTree
 	}
 
 	@Override
-	public List<InputMethod<? extends CodeTree>> getInputs()
+	public List<InputMethod<? extends Code>> getInputs()
 	{
-		List<InputMethod<? extends CodeTree>> returnValue = new LinkedList<>();
-		returnValue.add(Window.getWindow().getGuiFactor().createNameInputMethod("Name:", this));
+		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
+		returnValue.add(Window.getWindow().getGuiFactory().createNameInputMethod("Name:", this));
 		return returnValue;
 	}
 

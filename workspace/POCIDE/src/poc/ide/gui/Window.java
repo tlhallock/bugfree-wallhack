@@ -1,7 +1,6 @@
 package poc.ide.gui;
 
 import poc.ide.awt.AwtGuiFactory;
-import poc.ide.proj.FsLocation;
 import poc.ide.proj.Project;
 
 
@@ -13,12 +12,26 @@ public class Window
 	private Selector selector;
 	private ClassViewer cViewer;
 	
+	private Project project;
+	
 	private Window()
 	{
 		guiFactory = new AwtGuiFactory();
+		
 		viewer = guiFactory.createViewer();
 		selector = guiFactory.createSelector(viewer);
-		cViewer = guiFactory.createClassViewer(new Project(new FsLocation("./")));
+		cViewer = guiFactory.createClassViewer();
+	}
+	
+	public void setProject(Project project)
+	{
+		this.project = project;
+		cViewer.setProject(project);
+	}
+	
+	public Project getCurrentProject()
+	{
+		return project;
 	}
 	
 	public Selector getSelector()
@@ -36,12 +49,20 @@ public class Window
 		return cViewer;
 	}
 	
-	public GuiFactory getGuiFactor()
+	public GuiFactory getGuiFactory()
 	{
 		return guiFactory;
 	}
 
-	private static final Window window = new Window();
-	public static Window getWindow() { return window; }
+	private static Window window;
+
+	public static Window getWindow()
+	{
+		if (window == null)
+		{
+			window = new Window();
+		}
+		return window;
+	}
 
 }

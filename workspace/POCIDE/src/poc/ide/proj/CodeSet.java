@@ -6,19 +6,19 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-import poc.ide.code.CodeTree;
+import poc.ide.code.Code;
 import poc.ide.code.Type;
 
 public class CodeSet
 {
-	private Set<CodeTree> allCode;
+	private Set<Code> allCode;
 	
 	public CodeSet()
 	{
-		allCode = new HashSet<CodeTree>();
+		allCode = new HashSet<Code>();
 	}
 	
-	public void add(CodeTree code)
+	public void add(Code code)
 	{
 		if (!allCode.contains(code))
 		{
@@ -26,9 +26,9 @@ public class CodeSet
 		}
 	}
 	
-	public List<CodeTree> search(Type t, CodeTree scope)
+	public List<Code> search(Type t, Code scope)
 	{
-		List<CodeTree> list = new LinkedList<CodeTree>();
+		List<Code> list = new LinkedList<Code>();
 		
 		return list;
 	}
@@ -38,11 +38,11 @@ public class CodeSet
 		allCode.clear();
 	}
 
-	public TreeSet<CodeTree> filter(CodeFilter filter)
+	public TreeSet<Code> filter(CodeFilter filter)
 	{
-		TreeSet<CodeTree> set = new TreeSet<CodeTree>();
+		TreeSet<Code> set = new TreeSet<Code>();
 		
-		for (CodeTree tree : allCode)
+		for (Code tree : allCode)
 		{
 			if (filter.accept(tree))
 			{
@@ -53,11 +53,11 @@ public class CodeSet
 		return set;
 	}
 
-	public <T extends CodeTree> TreeSet<T> filter(CodeFilter filter, Class<T> c)
+	public <T extends Code> TreeSet<T> filter(CodeFilter filter, Class<T> c)
 	{
 		TreeSet<T> set = new TreeSet<T>();
 		
-		for (CodeTree tree : allCode)
+		for (Code tree : allCode)
 		{
 			if (!tree.getClass().isAssignableFrom(c))
 			{
@@ -75,6 +75,6 @@ public class CodeSet
 	
 	public interface CodeFilter
 	{
-		public boolean accept(CodeTree tree);
+		public boolean accept(Code tree);
 	}
 }

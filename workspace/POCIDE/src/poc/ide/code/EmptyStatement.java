@@ -7,7 +7,7 @@ import poc.ide.gui.InputMethod;
 
 public class EmptyStatement extends Statement
 {
-	public EmptyStatement(CodeTree parent)
+	public EmptyStatement(Code parent)
 	{
 		super(parent);
 	}
@@ -19,7 +19,7 @@ public class EmptyStatement extends Statement
 	}
 
 	@Override
-	public List<InputMethod<? extends CodeTree>> getInputs()
+	public List<InputMethod<? extends Code>> getInputs()
 	{
 		return Collections.emptyList();
 	}

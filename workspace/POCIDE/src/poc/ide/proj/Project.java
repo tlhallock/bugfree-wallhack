@@ -1,11 +1,17 @@
 package poc.ide.proj;
 
+import java.io.File;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
-import poc.ide.code.CodeTree;
+import poc.ide.code.CompilationUnit;
 import poc.ide.gen.CodeAdder;
 import poc.ide.gen.Filter;
+import poc.ide.main.FileRecurser;
+import poc.ide.main.FileRecurser.FileMethod;
+import poc.ide.main.Serializer;
 
 public class Project
 {
@@ -66,5 +72,39 @@ public class Project
 	public Set<FsLocation> getSources()
 	{
 		return srcDirs;
+	}
+
+	// Needs to get this from the Gui...
+	public FsLocation getDefaultSourceDir()
+	{
+		return srcDirs.iterator().next();
+	}
+	
+	public static Map<poc.ide.code.Package, CompilationUnit> getCompilationUnits(FsLocation location)
+	{
+		final Map<poc.ide.code.Package, CompilationUnit> returnValue = new HashMap<>();
+		
+		FileRecurser.recurse(location.getFile(), new FileMethod()
+		{
+			@Override
+			public void found(File file)
+			{
+				if (!file.getName().endsWith(".json"))
+				{
+					return;
+				}
+				
+				try
+				{
+					CompilationUnit read = Serializer.read(file);
+					returnValue.put(read.getPackage(), read);
+				}
+				catch(Exception ex)
+				{
+				}
+				
+			}});
+		
+		return returnValue;
 	}
 }

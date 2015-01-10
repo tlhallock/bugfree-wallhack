@@ -1,25 +1,23 @@
 package poc.ide.gui;
 
-import java.util.Observable;
-import java.util.Observer;
-
-import poc.ide.code.CodeTree;
-import poc.ide.main.RecursiveObserver;
+import poc.ide.code.Code;
+import poc.ide.code.util.Observer;
+import poc.ide.code.util.RecursiveObserver;
 
 public abstract class Viewer implements Observer
 {
-	private RecursiveObserver<CodeTree> observer;
-	private CodeTree code;
+	private RecursiveObserver<Code> observer;
+	private Code code;
 	
 	public Viewer()
 	{
-		observer = new RecursiveObserver<CodeTree>();
+		observer = new RecursiveObserver<Code>();
 		observer.addObserver(this);
 		
 		code = null;
 	}
 
-	public void setCode(CodeTree newCode)
+	public void setCode(Code newCode)
 	{
 		if (code != null)
 		{
@@ -36,7 +34,7 @@ public abstract class Viewer implements Observer
 	}
 	
 	@Override
-	public void update(Observable o, Object arg)
+	public void update()
 	{
 		if (code != null)
 		{
@@ -44,5 +42,5 @@ public abstract class Viewer implements Observer
 		}
 	}
 
-	public abstract void display(CodeTree code);
+	public abstract void display(Code code);
 }

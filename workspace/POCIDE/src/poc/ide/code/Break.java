@@ -3,19 +3,19 @@ package poc.ide.code;
 import java.util.LinkedList;
 import java.util.List;
 
+import poc.ide.code.util.Indenter;
 import poc.ide.gui.InputMethod;
-import poc.ide.main.Indenter;
 
-public class Break extends CodeTree
+public class Break extends Code
 {
 	private Label label;
 	
-	public Break(CodeTree parent)
+	public Break(Code parent)
 	{
 		super(parent);
 	}
 	
-	public Break(CodeTree parent, Label label)
+	public Break(Code parent, Label label)
 	{
 		this(parent);
 		this.label = label;
@@ -34,9 +34,9 @@ public class Break extends CodeTree
 	}
 
 	@Override
-	public List<InputMethod<? extends CodeTree>> getInputs()
+	public List<InputMethod<? extends Code>> getInputs()
 	{
-		List<InputMethod<? extends CodeTree>> returnValue = new LinkedList<>();
+		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
 		
 		// Almost certainly not right...
 		returnValue.addAll(label.getInputs());

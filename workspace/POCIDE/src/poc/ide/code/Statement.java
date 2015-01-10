@@ -1,8 +1,8 @@
 package poc.ide.code;
 
-public abstract class Statement extends CodeTree
+public abstract class Statement extends Code
 {
-	public Statement(CodeTree parent)
+	public Statement(Code parent)
 	{
 		super(parent);
 	}

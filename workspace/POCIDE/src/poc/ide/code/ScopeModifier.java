@@ -6,7 +6,7 @@ import java.util.List;
 import poc.ide.gui.InputMethod;
 import poc.ide.gui.Window;
 
-public class ScopeModifier extends CodeTree
+public class ScopeModifier extends Code
 {
 	public enum Scoping
 	{
@@ -32,12 +32,12 @@ public class ScopeModifier extends CodeTree
 	
 	private Scoping scope;
 	
-	public ScopeModifier(CodeTree parent)
+	public ScopeModifier(Code parent)
 	{
 		this(parent, Scoping.Private);
 	}
 	
-	public ScopeModifier(CodeTree parent, Scoping value)
+	public ScopeModifier(Code parent, Scoping value)
 	{
 		super(parent);
 		scope = value;
@@ -61,10 +61,10 @@ public class ScopeModifier extends CodeTree
 	}
 
 	@Override
-	public List<InputMethod<? extends CodeTree>> getInputs()
+	public List<InputMethod<? extends Code>> getInputs()
 	{
-		List<InputMethod<? extends CodeTree>> returnValue = new LinkedList<>();
-		returnValue.add(Window.getWindow().getGuiFactor().createScopeInputMethod("slope", this));
+		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
+		returnValue.add(Window.getWindow().getGuiFactory().createScopeInputMethod("slope", this));
 		return returnValue;
 	}
 

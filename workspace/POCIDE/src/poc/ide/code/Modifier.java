@@ -4,7 +4,7 @@ import java.util.List;
 
 import poc.ide.gui.InputMethod;
 
-public class Modifier extends CodeTree
+public class Modifier extends Code
 {
 	// final
 	// abstract
@@ -12,7 +12,7 @@ public class Modifier extends CodeTree
 	// native
 	// transient
 	
-	public Modifier(CodeTree parent)
+	public Modifier(Code parent)
 	{
 		super(parent);
 	}
@@ -24,7 +24,7 @@ public class Modifier extends CodeTree
 	}
 
 	@Override
-	public List<InputMethod<? extends CodeTree>> getInputs()
+	public List<InputMethod<? extends Code>> getInputs()
 	{
 		return null;
 	}

@@ -1,8 +1,8 @@
 package poc.ide.gui;
 
-import poc.ide.code.CodeTree;
+import poc.ide.code.Code;
 
-public abstract class InputMethod<T extends CodeTree>
+public abstract class InputMethod<T extends Code>
 {
 	private String label;
 	protected T code;
@@ -15,4 +15,18 @@ public abstract class InputMethod<T extends CodeTree>
 	
 	public abstract void assign();
 
+	T getCode()
+	{
+		return code;
+	}
+	
+	public boolean canInsert()
+	{
+		return true;
+	}
+	
+	protected String getLabel()
+	{
+		return label;
+	}
 }

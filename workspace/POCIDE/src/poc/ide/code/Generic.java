@@ -5,9 +5,9 @@ import java.util.List;
 
 import poc.ide.gui.InputMethod;
 
-public class Generic extends CodeTree
+public class Generic extends Code
 {
-	public Generic(CodeTree parent)
+	public Generic(Code parent)
 	{
 		super(parent);
 	}
@@ -19,7 +19,7 @@ public class Generic extends CodeTree
 	}
 
 	@Override
-	public List<InputMethod<? extends CodeTree>> getInputs()
+	public List<InputMethod<? extends Code>> getInputs()
 	{
 		return Collections.emptyList();
 	}

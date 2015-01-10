@@ -4,15 +4,15 @@ import java.util.LinkedList;
 import java.util.List;
 
 import poc.ide.code.Expression.BooleanExpression;
+import poc.ide.code.util.Indenter;
 import poc.ide.gui.InputMethod;
-import poc.ide.main.Indenter;
 
-public class DoWhile extends CodeTree
+public class DoWhile extends Code
 {
 	private Block block;
 	private Expression<Type.Primitive.BooleanType> whileExpr;
 	
-	public DoWhile(CodeTree parent)
+	public DoWhile(Code parent)
 	{
 		super(parent);
 		block = new Block(this);
@@ -29,9 +29,9 @@ public class DoWhile extends CodeTree
 	}
 
 	@Override
-	public List<InputMethod<? extends CodeTree>> getInputs()
+	public List<InputMethod<? extends Code>> getInputs()
 	{
-		List<InputMethod<? extends CodeTree>> returnValue = new LinkedList<>();
+		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
 		
 		returnValue.addAll(whileExpr.getInputs());
 		

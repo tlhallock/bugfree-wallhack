@@ -7,16 +7,16 @@ import java.util.List;
 import poc.ide.gui.InputMethod;
 import poc.ide.gui.Window;
 
-public abstract class Type extends CodeTree
+public abstract class Type extends Code
 {
 	protected Name name;
 
-	public Type(CodeTree parent)
+	public Type(Code parent)
 	{
 		super(parent);
 	}
 	
-	public Type(CodeTree parent, String name)
+	public Type(Code parent, String name)
 	{
 		super(parent);
 		this.name = new Name(this, name);
@@ -51,11 +51,11 @@ public abstract class Type extends CodeTree
 		public static final class BooleanType extends Primitive { public static BooleanType implementation = new BooleanType(); private BooleanType() { super("boolean");} };
 		
 		@Override
-		public List<InputMethod<? extends CodeTree>> getInputs()
+		public List<InputMethod<? extends Code>> getInputs()
 		{
-			List<InputMethod<? extends CodeTree>> returnValue = new LinkedList<>();
+			List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
 			
-			Window.getWindow().getGuiFactor().createNameInputMethod("Class name:", name);
+			Window.getWindow().getGuiFactory().createNameInputMethod("Class name:", name);
 			
 			return returnValue;
 		}

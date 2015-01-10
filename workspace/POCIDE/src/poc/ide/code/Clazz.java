@@ -3,11 +3,14 @@ package poc.ide.code;
 import java.util.LinkedList;
 import java.util.List;
 
+import poc.ide.code.ScopeModifier.Scoping;
 import poc.ide.gui.InputMethod;
 import poc.ide.gui.Window;
 
 public class Clazz extends Type
 {
+	public static final Code implementation = new Clazz(null);
+
 	private ScopeModifier scope;
 	
 	private final List<Declaration<? extends Type>>  variables   ;
@@ -16,8 +19,13 @@ public class Clazz extends Type
 	private final List<Type>                         innerClasses;
 	private final List<Block>                        blocks      ;
 	private final List<Block>                        staticBlocks;
+
+	public Clazz(CompilationUnit u)
+	{
+		this(u, "DaNewClassB");
+	}
 	
-	public Clazz(CompliationUnit u, String name)
+	public Clazz(CompilationUnit u, String name)
 	{
 		super(u, name);
 		
@@ -30,14 +38,19 @@ public class Clazz extends Type
 		blocks       = new LinkedList<Block>                       ();  
 		staticBlocks = new LinkedList<Block>                       ();  
 	}
+	
+	public boolean isPublic()
+	{
+		return getScopeModifier().getScope().equals(Scoping.Public);
+	}
 
 	@Override
-	public List<InputMethod<? extends CodeTree>> getInputs()
+	public List<InputMethod<? extends Code>> getInputs()
 	{
-		List<InputMethod<? extends CodeTree>> returnValue = new LinkedList<>();
+		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
 		
-		returnValue.add(Window.getWindow().getGuiFactor().createScopeInputMethod("Class Scope:", scope));
-		returnValue.add(Window.getWindow().getGuiFactor().createNameInputMethod("Class name:", name));
+		returnValue.add(Window.getWindow().getGuiFactory().createScopeInputMethod("Class Scope:", scope));
+		returnValue.add(Window.getWindow().getGuiFactory().createNameInputMethod("Class name:", name));
 		
 		return returnValue;
 	}
@@ -54,5 +67,10 @@ public class Clazz extends Type
 		builder.append("{\n");
 		builder.append("}\n");
 		return builder;
+	}
+
+	public ScopeModifier getScopeModifier()
+	{
+		return scope;
 	}
 }

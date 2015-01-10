@@ -1,7 +1,7 @@
-package poc.ide.main;
+package poc.ide.code.util;
 
-import java.util.Observable;
-import java.util.Observer;
+import poc.ide.code.util.Observer;
+import poc.ide.code.util.Observable;
 
 public class RecursiveObserver<T extends TreeStructure<T>> extends Observable implements Observer
 {
@@ -34,12 +34,12 @@ public class RecursiveObserver<T extends TreeStructure<T>> extends Observable im
 			add(child);
 		}
 		
-		((Observable) t).deleteObserver(this);
+		((Observable) t).removeObserver(this);
 	}
 
 	@Override
-	public void update(Observable o, Object arg)
+	public void update()
 	{
-		notifyObservers(arg);
+		notifyObservers();
 	}
 }

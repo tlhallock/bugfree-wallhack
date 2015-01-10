@@ -4,10 +4,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 import poc.ide.code.Expression.BooleanExpression;
+import poc.ide.code.util.Indenter;
 import poc.ide.gui.InputMethod;
-import poc.ide.main.Indenter;
 
-public class For extends CodeTree
+public class For extends Code
 {
 	// Needs to be an assignment list...
 	private Assignment initlizer;
@@ -16,7 +16,7 @@ public class For extends CodeTree
 	
 	private Block block;
 	
-	public For(CodeTree parent)
+	public For(Code parent)
 	{
 		super(parent);
 		condition = BooleanExpression.getFalse(this);
@@ -39,9 +39,9 @@ public class For extends CodeTree
 	}
 
 	@Override
-	public List<InputMethod<? extends CodeTree>> getInputs()
+	public List<InputMethod<? extends Code>> getInputs()
 	{
-		List<InputMethod<? extends CodeTree>> returnValue = new LinkedList<>();
+		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
 		
 		return returnValue;
 	}

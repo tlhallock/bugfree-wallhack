@@ -3,22 +3,31 @@ package poc.ide.code;
 import java.util.LinkedList;
 import java.util.List;
 
-import poc.ide.gui.InputMethod;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
-public class Package extends CodeTree
+import poc.ide.gui.InputMethod;
+import poc.ide.proj.FsLocation;
+
+public class Package extends Code
 {
+	@JsonIgnore
+	private FsLocation location;
+	
 	private Name[] name;
 	
-	public Package(CodeTree parent)
+	
+	public Package(FsLocation location)
 	{
-		super(parent);
+		// top level...
+		super(null);
+		this.location = location;
 		name = new Name[0];
 	}
 
 	@Override
 	public String getUniqueNamespaceToken()
 	{
-		return collect();
+		return collect('.');
 	}
 
 	@Override
@@ -40,24 +49,29 @@ public class Package extends CodeTree
 //	}
 
 	@Override
-	public List<InputMethod<? extends CodeTree>> getInputs()
+	public List<InputMethod<? extends Code>> getInputs()
 	{
-		List<InputMethod<? extends CodeTree>> returnValue = new LinkedList<>();
+		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
 		
 		//
 		
 		return returnValue;
 	}
 
-	public String collect()
+	public String collect(char c)
 	{
 		StringBuilder builder = new StringBuilder();
 		
 		for (Name n : name)
 		{
-			builder.append(n.getName()).append('.');
+			builder.append(n.getName()).append(c);
 		}
 		
 		return builder.toString();
+	}
+
+	public String toFs()
+	{
+		return collect('/');
 	}
 }

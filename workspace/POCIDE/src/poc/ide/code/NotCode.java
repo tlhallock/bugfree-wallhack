@@ -6,9 +6,9 @@ import java.util.List;
 import poc.ide.gui.InputMethod;
 import poc.ide.gui.Viewer;
 
-public class NotCode extends CodeTree
+public class NotCode extends Code
 {
-	public NotCode(CodeTree parent)
+	public NotCode(Code parent)
 	{
 		super(parent);
 	}
@@ -20,7 +20,7 @@ public class NotCode extends CodeTree
 	}
 
 	@Override
-	public List<InputMethod<? extends CodeTree>> getInputs() { return Collections.emptyList(); }
+	public List<InputMethod<? extends Code>> getInputs() { return Collections.emptyList(); }
 	
 	@Override
 	public String getUniqueNamespaceToken()

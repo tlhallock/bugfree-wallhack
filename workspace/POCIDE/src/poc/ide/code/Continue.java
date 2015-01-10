@@ -3,12 +3,12 @@ package poc.ide.code;
 import java.util.Collections;
 import java.util.List;
 
+import poc.ide.code.util.Indenter;
 import poc.ide.gui.InputMethod;
-import poc.ide.main.Indenter;
 
-public class Continue extends CodeTree
+public class Continue extends Code
 {
-	public Continue(CodeTree parent)
+	public Continue(Code parent)
 	{
 		super(parent);
 	}
@@ -20,7 +20,7 @@ public class Continue extends CodeTree
 	}
 
 	@Override
-	public List<InputMethod<? extends CodeTree>> getInputs()
+	public List<InputMethod<? extends Code>> getInputs()
 	{
 		return Collections.emptyList();
 	}

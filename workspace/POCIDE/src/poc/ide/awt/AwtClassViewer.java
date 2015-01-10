@@ -6,18 +6,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.TreeSet;
+import java.util.Set;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import poc.ide.code.Clazz;
-import poc.ide.code.CodeTree;
+import poc.ide.code.Code;
+import poc.ide.code.CompilationUnit;
+import poc.ide.code.Package;
+import poc.ide.code.util.CodeGenerators;
 import poc.ide.gui.ClassViewer;
 import poc.ide.gui.Window;
 import poc.ide.proj.FsLocation;
-import poc.ide.proj.Project;
 
 class AwtClassViewer extends ClassViewer
 {
@@ -27,10 +29,8 @@ class AwtClassViewer extends ClassViewer
 	
 	private GridLayout layout;
 	
-	AwtClassViewer(Project project)
+	AwtClassViewer()
 	{
-		super(project);
-		
 		panel = new JPanel();
 		panel.setBounds(50,50,50,50);
 		panel.setLayout(layout = new GridLayout(0,2));
@@ -44,8 +44,9 @@ class AwtClassViewer extends ClassViewer
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{
-				FsLocation next = getProject().getSources().iterator().next();
-				Clazz clazz = new Clazz(null, "DaNewClass");
+				Package createCode = CodeGenerators.Package_GENERATOR.createCode(null, null);
+				CompilationUnit createCode2 = CodeGenerators.CompilationUnit_GENERATOR.createCode(createCode, null);
+				Clazz clazz = CodeGenerators.Clazz_GENERATOR.createCode(createCode2, null);
 				getProject().getCodeSet().add(clazz);
 				Window.getWindow().getSelector().push(clazz);
 				
@@ -56,7 +57,7 @@ class AwtClassViewer extends ClassViewer
 	}
 
 	@Override
-	public void showClasses(TreeSet<Clazz> types)
+	public void showClasses(Set<Clazz> types)
 	{
 		panel.removeAll();
 		
@@ -65,7 +66,7 @@ class AwtClassViewer extends ClassViewer
 		
 		for (final Clazz type : types)
 		{
-			CodeTree parent = type.getParent();
+			Code parent = type.getParent();
 			
 			JLabel label;
 			if (parent == null)

@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import javax.swing.JTextArea;
 
-import poc.ide.code.CodeTree;
+import poc.ide.code.Code;
 import poc.ide.gui.Viewer;
 
 class AwtViewer extends Viewer
@@ -23,7 +23,7 @@ class AwtViewer extends Viewer
 	}
 
 	@Override
-	public void display(CodeTree code)
+	public void display(Code code)
 	{
 		textArea.setText(code.toString());
 	}

@@ -6,9 +6,9 @@ import java.util.List;
 import poc.ide.code.Type.Primitive.BooleanType;
 import poc.ide.gui.InputMethod;
 
-public abstract class Expression<T extends Type> extends CodeTree
+public abstract class Expression<T extends Type> extends Code
 {
-	public Expression(CodeTree parent)
+	public Expression(Code parent)
 	{
 		super(parent);
 	}
@@ -17,7 +17,7 @@ public abstract class Expression<T extends Type> extends CodeTree
 	{
 		boolean value;
 		
-		private BooleanExpression(CodeTree parent, boolean value) { super(parent); this.value = value; }
+		private BooleanExpression(Code parent, boolean value) { super(parent); this.value = value; }
 		
 		@Override
 		public StringBuilder appendText(StringBuilder builder, int depth)
@@ -26,18 +26,18 @@ public abstract class Expression<T extends Type> extends CodeTree
 		}
 
 		@Override
-		public List<InputMethod<? extends CodeTree>> getInputs()
+		public List<InputMethod<? extends Code>> getInputs()
 		{
 			throw new RuntimeException("boolean not implemented");
 		}
 		
-		public static final BooleanExpression getTrue( CodeTree p) { return new BooleanExpression(p, true);  }
-		public static final BooleanExpression getFalse(CodeTree p) { return new BooleanExpression(p, false); }
+		public static final BooleanExpression getTrue( Code p) { return new BooleanExpression(p, true);  }
+		public static final BooleanExpression getFalse(Code p) { return new BooleanExpression(p, false); }
 	}
 	
 	public static class FunctionCall<T extends Type> extends Expression<T>
 	{
-		public FunctionCall(CodeTree parent)
+		public FunctionCall(Code parent)
 		{
 			super(parent);
 		}
@@ -49,7 +49,7 @@ public abstract class Expression<T extends Type> extends CodeTree
 		}
 
 		@Override
-		public List<InputMethod<? extends CodeTree>> getInputs()
+		public List<InputMethod<? extends Code>> getInputs()
 		{
 			return Collections.emptyList();
 		}
@@ -57,7 +57,7 @@ public abstract class Expression<T extends Type> extends CodeTree
 	
 	public static class Null<T extends Clazz> extends Expression<T>
 	{
-		public Null(CodeTree parent)
+		public Null(Code parent)
 		{
 			super(parent);
 		}
@@ -69,7 +69,7 @@ public abstract class Expression<T extends Type> extends CodeTree
 		}
 
 		@Override
-		public List<InputMethod<? extends CodeTree>> getInputs()
+		public List<InputMethod<? extends Code>> getInputs()
 		{
 			return Collections.emptyList();
 		}
@@ -80,7 +80,7 @@ public abstract class Expression<T extends Type> extends CodeTree
 		private T t;
 		private Function f;
 		
-		public New(CodeTree parent)
+		public New(Code parent)
 		{
 			super(parent);
 		}
@@ -92,7 +92,7 @@ public abstract class Expression<T extends Type> extends CodeTree
 		}
 
 		@Override
-		public List<InputMethod<? extends CodeTree>> getInputs()
+		public List<InputMethod<? extends Code>> getInputs()
 		{
 			return Collections.emptyList();
 		}

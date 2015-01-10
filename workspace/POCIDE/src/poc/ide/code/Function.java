@@ -8,7 +8,7 @@ import poc.ide.gui.InputMethod;
 import poc.ide.gui.Window;
 
 
-public class Function extends CodeTree
+public class Function extends Code
 {
 	private Name name;
 	private ScopeModifier scope;
@@ -26,7 +26,7 @@ public class Function extends CodeTree
 	Type generic;
 
 	
-	public Function(CodeTree parent)
+	public Function(Code parent)
 	{
 		super(parent);
 		
@@ -51,12 +51,12 @@ public class Function extends CodeTree
 	}
 	
 	@Override
-	public List<InputMethod<? extends CodeTree>> getInputs()
+	public List<InputMethod<? extends Code>> getInputs()
 	{
-		List<InputMethod<? extends CodeTree>> returnValue = new LinkedList<>();
+		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
 		
-		returnValue.add(Window.getWindow().getGuiFactor().createScopeInputMethod("Function Scope:", scope));
-		returnValue.add(Window.getWindow().getGuiFactor().createNameInputMethod("Function Name:", name));
+		returnValue.add(Window.getWindow().getGuiFactory().createScopeInputMethod("Function Scope:", scope));
+		returnValue.add(Window.getWindow().getGuiFactory().createNameInputMethod("Function Name:", name));
 		
 		return returnValue;
 	}
