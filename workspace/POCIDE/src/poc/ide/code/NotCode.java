@@ -1,10 +1,8 @@
 package poc.ide.code;
 
-import java.util.Collections;
 import java.util.List;
 
 import poc.ide.gui.InputMethod;
-import poc.ide.gui.Viewer;
 
 public class NotCode extends Code
 {
@@ -20,7 +18,7 @@ public class NotCode extends Code
 	}
 
 	@Override
-	public List<InputMethod<? extends Code>> getInputs() { return Collections.emptyList(); }
+	public void appendInputs(List<InputMethod<? extends Code>> list) {}
 	
 	@Override
 	public String getUniqueNamespaceToken()

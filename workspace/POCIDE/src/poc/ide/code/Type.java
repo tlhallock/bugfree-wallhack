@@ -1,7 +1,5 @@
 package poc.ide.code;
 
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
 import poc.ide.gui.InputMethod;
@@ -37,7 +35,6 @@ public abstract class Type extends Code
 
 	public static class Primitive extends Type
 	{
-		private static HashMap<String, String> names = new HashMap<String, String>();
 		protected Primitive(String name) { super(null, name); }
 		
 		public static final class IntegerType extends Primitive { public static IntegerType implementation = new IntegerType(); private IntegerType() { super("int");    } };
@@ -51,13 +48,9 @@ public abstract class Type extends Code
 		public static final class BooleanType extends Primitive { public static BooleanType implementation = new BooleanType(); private BooleanType() { super("boolean");} };
 		
 		@Override
-		public List<InputMethod<? extends Code>> getInputs()
+		public void appendInputs(List<InputMethod<? extends Code>> list)
 		{
-			List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
-			
-			Window.getWindow().getGuiFactory().createNameInputMethod("Class name:", name);
-			
-			return returnValue;
+			list.add(Window.getWindow().getGuiFactory().createNameInputMethod("Class name:", name));
 		}
 	}
 }

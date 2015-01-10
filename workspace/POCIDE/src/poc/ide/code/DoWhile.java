@@ -1,6 +1,5 @@
 package poc.ide.code;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import poc.ide.code.Expression.BooleanExpression;
@@ -29,12 +28,8 @@ public class DoWhile extends Code
 	}
 
 	@Override
-	public List<InputMethod<? extends Code>> getInputs()
+	public void appendInputs(List<InputMethod<? extends Code>> list)
 	{
-		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
-		
-		returnValue.addAll(whileExpr.getInputs());
-		
-		return returnValue;
+		whileExpr.appendInputs(list);
 	}
 }

@@ -45,14 +45,10 @@ public class Clazz extends Type
 	}
 
 	@Override
-	public List<InputMethod<? extends Code>> getInputs()
+	public void appendInputs(List<InputMethod<? extends Code>> list)
 	{
-		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
-		
-		returnValue.add(Window.getWindow().getGuiFactory().createScopeInputMethod("Class Scope:", scope));
-		returnValue.add(Window.getWindow().getGuiFactory().createNameInputMethod("Class name:", name));
-		
-		return returnValue;
+		list.add(Window.getWindow().getGuiFactory().createScopeInputMethod("Class Scope:", scope));
+		list.add(Window.getWindow().getGuiFactory().createNameInputMethod("Class name:", name));
 	}
 
 	public String getName()

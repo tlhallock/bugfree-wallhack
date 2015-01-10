@@ -123,7 +123,7 @@ public class CodeGenerators
 		@Override
 		public String getLabel()
 		{
-			return "file";
+			return "compilation unit";
 		}
 	};
 	static { GENERATORS.add(CompilationUnit_GENERATOR); }

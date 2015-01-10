@@ -30,16 +30,12 @@ public class Block extends Code
 	}
 
 	@Override
-	public List<InputMethod<? extends Code>> getInputs()
+	public void appendInputs(List<InputMethod<? extends Code>> list)
 	{
-		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
-		
 		int i = 0;
 		for (Code tree : code)
 		{
-			returnValue.addAll(tree.getInputs());
+			list.addAll(tree.getInputs());
 		}
-		
-		return returnValue;
 	}
 }

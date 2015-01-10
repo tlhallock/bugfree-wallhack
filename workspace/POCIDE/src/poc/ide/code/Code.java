@@ -155,7 +155,13 @@ public abstract class Code extends Observable implements Comparable<Code>, TreeS
 		return null;
 	}
 
-//	public abstract void appendInputs(List<InputMethod<? extends CodeTree>> list);
-	public abstract List<InputMethod<? extends Code>> getInputs();
+	public abstract void appendInputs(List<InputMethod<? extends Code>> list);
+	public final List<InputMethod<? extends Code>> getInputs()
+	{
+		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
+		appendInputs(returnValue);
+		return returnValue;
+	}
+	
 	public abstract StringBuilder appendText(StringBuilder builder, int depth);
 }

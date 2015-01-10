@@ -61,11 +61,9 @@ public class ScopeModifier extends Code
 	}
 
 	@Override
-	public List<InputMethod<? extends Code>> getInputs()
+	public void appendInputs(List<InputMethod<? extends Code>> list)
 	{
-		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
-		returnValue.add(Window.getWindow().getGuiFactory().createScopeInputMethod("slope", this));
-		return returnValue;
+		list.add(Window.getWindow().getGuiFactory().createScopeInputMethod("slope", this));
 	}
 
 	@Override

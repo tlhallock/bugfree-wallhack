@@ -29,15 +29,11 @@ public class Return<T extends Type> extends Code
 	}
 
 	@Override
-	public List<InputMethod<? extends Code>> getInputs()
+	public void appendInputs(List<InputMethod<? extends Code>> list)
 	{
-		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
-		
 		if (expr != null)
 		{
-			returnValue.addAll(expr.getInputs());
+			list.addAll(expr.getInputs());
 		}
-		
-		return returnValue;
 	}
 }

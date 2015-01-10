@@ -24,9 +24,8 @@ public class Modifier extends Code
 	}
 
 	@Override
-	public List<InputMethod<? extends Code>> getInputs()
+	public void appendInputs(List<InputMethod<? extends Code>> list)
 	{
-		return null;
 	}
 
 }

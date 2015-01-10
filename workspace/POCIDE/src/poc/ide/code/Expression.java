@@ -1,6 +1,5 @@
 package poc.ide.code;
 
-import java.util.Collections;
 import java.util.List;
 
 import poc.ide.code.Type.Primitive.BooleanType;
@@ -26,7 +25,7 @@ public abstract class Expression<T extends Type> extends Code
 		}
 
 		@Override
-		public List<InputMethod<? extends Code>> getInputs()
+		public void appendInputs(List<InputMethod<? extends Code>> list)
 		{
 			throw new RuntimeException("boolean not implemented");
 		}
@@ -49,10 +48,7 @@ public abstract class Expression<T extends Type> extends Code
 		}
 
 		@Override
-		public List<InputMethod<? extends Code>> getInputs()
-		{
-			return Collections.emptyList();
-		}
+		public void appendInputs(List<InputMethod<? extends Code>> list) {}
 	}
 	
 	public static class Null<T extends Clazz> extends Expression<T>
@@ -69,10 +65,7 @@ public abstract class Expression<T extends Type> extends Code
 		}
 
 		@Override
-		public List<InputMethod<? extends Code>> getInputs()
-		{
-			return Collections.emptyList();
-		}
+		public void appendInputs(List<InputMethod<? extends Code>> list) {}
 	}
 	
 	public static class New<T extends Clazz> extends Expression<T>
@@ -92,10 +85,7 @@ public abstract class Expression<T extends Type> extends Code
 		}
 
 		@Override
-		public List<InputMethod<? extends Code>> getInputs()
-		{
-			return Collections.emptyList();
-		}
+		public void appendInputs(List<InputMethod<? extends Code>> list) {}
 	}
 	
 	public static <T extends Type> Expression<T> getDefaultExpression(T t)

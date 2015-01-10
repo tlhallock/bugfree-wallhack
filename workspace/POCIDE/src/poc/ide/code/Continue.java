@@ -1,6 +1,5 @@
 package poc.ide.code;
 
-import java.util.Collections;
 import java.util.List;
 
 import poc.ide.code.util.Indenter;
@@ -20,8 +19,7 @@ public class Continue extends Code
 	}
 
 	@Override
-	public List<InputMethod<? extends Code>> getInputs()
+	public void appendInputs(List<InputMethod<? extends Code>> list)
 	{
-		return Collections.emptyList();
 	}
 }

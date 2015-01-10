@@ -70,21 +70,17 @@ public class CompilationUnit extends Code
 
 
 	@Override
-	public List<InputMethod<? extends Code>> getInputs()
+	public void appendInputs(List<InputMethod<? extends Code>> list)
 	{
-		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
-
 		for (Import i : imports)
 		{
-			returnValue.addAll(i.getInputs());
+			list.addAll(i.getInputs());
 		}
 
 		for (Clazz t : types)
 		{
-			Window.getWindow().getGuiFactory().createChildInputMethod(t.getName(), t);
+			list.add(Window.getWindow().getGuiFactory().createChildInputMethod(t.getName(), t));
 		}
-		
-		return returnValue;
 	}
 	
 

@@ -1,6 +1,5 @@
 package poc.ide.code;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import poc.ide.gui.InputMethod;
@@ -33,11 +32,9 @@ public class Name extends Code
 	}
 
 	@Override
-	public List<InputMethod<? extends Code>> getInputs()
+	public void appendInputs(List<InputMethod<? extends Code>> list)
 	{
-		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
-		returnValue.add(Window.getWindow().getGuiFactory().createNameInputMethod("Name:", this));
-		return returnValue;
+		list.add(Window.getWindow().getGuiFactory().createNameInputMethod("Name:", this));
 	}
 
 	@Override

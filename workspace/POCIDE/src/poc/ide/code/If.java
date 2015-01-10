@@ -54,10 +54,5 @@ public class If extends Code
 	}
 
 	@Override
-	public List<InputMethod<? extends Code>> getInputs()
-	{
-		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
-		
-		return returnValue;
-	}
+	public void appendInputs(List<InputMethod<? extends Code>> list) {}
 }

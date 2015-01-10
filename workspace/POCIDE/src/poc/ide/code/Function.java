@@ -1,6 +1,5 @@
 package poc.ide.code;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import poc.ide.code.ScopeModifier.Scoping;
@@ -51,14 +50,10 @@ public class Function extends Code
 	}
 	
 	@Override
-	public List<InputMethod<? extends Code>> getInputs()
+	public void appendInputs(List<InputMethod<? extends Code>> list)
 	{
-		List<InputMethod<? extends Code>> returnValue = new LinkedList<>();
-		
-		returnValue.add(Window.getWindow().getGuiFactory().createScopeInputMethod("Function Scope:", scope));
-		returnValue.add(Window.getWindow().getGuiFactory().createNameInputMethod("Function Name:", name));
-		
-		return returnValue;
+		list.add(Window.getWindow().getGuiFactory().createScopeInputMethod("Function Scope:", scope));
+		list.add(Window.getWindow().getGuiFactory().createNameInputMethod("Function Name:", name));
 	}
 
 	@Override
